@@ -1,14 +1,14 @@
-import {useState} from 'react'
+import {useDispatch} from 'react-redux'
+import {increment, decrement} from './redux/ducks/counter'
 
 function Counter(props) {
-  const [counter, setCounter] = useState(0)
+  const dispatch = useDispatch()
 
   return (
-    <div style={{background: "#ccc", padding: "10px 0 30px", borderRadius: "5px"}}>
-      <h2>Counter: {counter}</h2>
+    <div style={{background: "#ccc", padding: "10px 0 10px", borderRadius: "5px"}}>
       <div style={{display: "flex", gap: "1rem", justifyContent: "center"}}>
-        <button onClick={() => setCounter(prev => prev + 1)}>Increment</button>
-        <button onClick={() => setCounter(prev => prev - 1)}>Decrement</button>
+        <button onClick={() => dispatch(increment())}>Increment</button>
+        <button onClick={() => dispatch(decrement())}>Decrement</button>
       </div>
     </div>
   )
